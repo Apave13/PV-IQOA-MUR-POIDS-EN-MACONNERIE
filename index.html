@@ -172,8 +172,9 @@
 
         @media print {
             #section-formulaire, .action-bar { display: none !important; }
-            #section-rapport { display: block !important; padding: 0; }
-            .print-section { page-break-inside: avoid; }
+            #section-rapport { display: block !important; padding: 0; margin: 0; }
+            .print-section { page-break-inside: avoid; margin-bottom: 30px; }
+            .page-break { page-break-before: always; }
         }
     </style>
 </head>
@@ -617,7 +618,8 @@
         html += `</div>`;
 
         // B. Relevé
-        html += `<div class="print-section"><div class="print-h2">B. Relevé des Désordres</div><table class="print-table">`;
+        html += `<div class="print-section page-break"><div class="print-h2">B. Relevé des Désordres</div><table class="print-table">`;
+        // CORRECTION ICI: Structure de 3 lignes pour les désordres (Obs sous photo)
         html += `<tbody>`; // Pas de thead global, headers insérés par section
         
         let hasB = false;
@@ -672,9 +674,10 @@
         html += `</tbody></table></div>`;
 
         // C. Synthèse
-        html += `<div class="print-section"><div class="print-h2">C. Fiche de Synthèse</div>`;
+        html += `<div class="print-section page-break"><div class="print-h2">C. Fiche de Synthèse</div>`;
+        // UTILISATION DES VARIABLES CSS POUR LARGEUR COLONNES SYNTHESE (80% / 10% / 10%)
         html += `<table class="print-table" style="border: 2px solid var(--c-primaire); width: 65%;">`;
-        html += `<thead><tr style="background-color: var(--c-primaire); color: white;"><th style="width: var(--w-synth-libelle);">Éléments et groupes inspectés</th><th style="text-align:center; width: 20%;">Classe</th><th style="text-align:center; width: var(--w-synth-s);">S</th></tr></thead><tbody>`;
+        html += `<thead><tr style="background-color: var(--c-primaire); color: white;"><th style="width: var(--w-synth-libelle);">Éléments et groupes inspectés</th><th style="text-align:center; width: var(--w-synth-classe);">Classe</th><th style="text-align:center; width: var(--w-synth-s);">S</th></tr></thead><tbody>`;
         
         fullStructure.forEach(sec => {
             const rawNote = document.getElementById('synth_sec_' + sec.id).innerHTML;
@@ -705,14 +708,14 @@
         
         // E. Analyse
         const analyseObs = document.getElementById('i_analyse_obs')?.value || "";
-        html += `<div class="print-h2" style="margin-top: 20px;">E. ANALYSE ET RECOMMANDATIONS</div>`;
+        html += `<div class="print-section page-break"><div class="print-h2">E. ANALYSE ET RECOMMANDATIONS</div>`;
         html += `<div style="border: 2px solid var(--c-primaire); border-radius: 6px; padding: 15px; background: #fff; min-height: 80px; font-size: 10.5pt; line-height: 1.4;">${analyseObs}</div></div>`;
         
         // D. Non visitée
         const nonVisObs = document.getElementById('i_non_visitee_obs').value;
         const nonVisPhotos = photoStorage['grid_non_visitee'] || [];
         if (nonVisObs || nonVisPhotos.length > 0) {
-            html += `<div class="print-section"><div class="print-h2">D. Partie Non Visitée de l’Ouvrage</div><table class="print-table"><tr><td>${nonVisObs}</td></tr></table>`;
+            html += `<div class="print-section page-break"><div class="print-h2">D. Partie Non Visitée de l’Ouvrage</div><table class="print-table"><tr><td>${nonVisObs}</td></tr></table>`;
             html += `<div class="print-photos-2cols" id="p_grid_non_visitee"></div></div>`;
         }
 
