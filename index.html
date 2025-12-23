@@ -7,61 +7,78 @@
     <style>
         /* ==========================================================================
            VARIABLES DE CONFIGURATION GLOBALE
-           Modifiez ces valeurs pour changer l'apparence de l'application
            ========================================================================== */
         :root { 
             /* --- 1. COULEURS --- */
-            --c-primaire: #1D3051;        /* Bleu principal (Titres, En-têtes) */
-            --c-secondaire: #009A4D;      /* Vert (Boutons validation, Photos présentes) */
+            --c-primaire: #1D3051;        /* Bleu principal Apave */
+            --c-secondaire: #009A4D;      /* Vert (Boutons validation) */
             --c-alerte: #d32f2f;          /* Rouge (Sécurité S) */
-            --c-fond-page: #f5f7fa;       /* Fond de la page */
-            --c-fond-boite: #ffffff;      /* Fond des conteneurs */
-            --c-fond-header-tab: #f8fafc; /* Fond en-tête tableau */
-            --c-fond-accordeon: #eef3f7;  /* Fond titres accordéons */
-            --c-texte: #333333;           /* Couleur texte principal */
-            --c-texte-leger: #666666;     /* Couleur texte secondaire */
-            --c-bordure: #e1e4e8;         /* Couleur bordures */
-            --c-ai: #6366f1;              /* Couleur bouton IA */
+            --c-orange: #f57c00;          /* Orange */
+            --c-gris: #9e9e9e;            /* Gris */
+            --c-fond-page: #f5f7fa;       
+            --c-fond-boite: #ffffff;      
+            --c-fond-header-tab: #f8fafc; 
+            --c-fond-accordeon: #eef3f7;  
+            --c-texte: #333333;           
+            --c-texte-leger: #666666;     
+            --c-bordure: #e1e4e8;         
 
             /* --- 2. TYPOGRAPHIE --- */
-            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --taille-texte: 15px;         /* Taille standard */
-            --taille-h1: 1.5rem;          /* Grand Titre */
-            --taille-h2: 1.15rem;         /* Titres Sections */
-            --taille-h3: 1.15rem;         /* Titres Accordéons */
-            --taille-h4: 1.05rem;         /* Sous-titres */
+            --font-stack: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, "Arial", sans-serif;
+            --taille-texte: 15px;         
+            --taille-h1: 2.5rem;          
+            --taille-h2: 1.8rem;          
+            --taille-h3: 1.3rem;          
+            --taille-h4: 1.1rem;
+            
+            /* CONFIGURATION TITRES A.1 - A.6 */
+            --taille-titre-sections-A: 1.15rem;          
+            --bg-titre-sections-A: #e9ecef; /* COULEUR DE FOND GRISE (Case) */
 
-            /* --- 3. DIMENSIONS TABLEAUX (Largeurs Colonnes) --- */
-            /* Formulaire Saisie */
-            --w-col-code: 10%;            /* Colonne Code */
-            --w-col-libelle: 35%;         /* Colonne Défaut/Libellé */
-            --w-col-classe: 15%;          /* Colonne Classe */
-            --w-col-s: 8%;                /* Colonne S (Sécurité) */
-            --w-col-photo: 10%;           /* Colonne Bouton Photo */
+            /* --- 3. DIMENSIONS TABLEAUX --- */
+            --w-col-code: 10%;            
+            --w-col-libelle: 35%;         
+            --w-col-classe: 15%;          
+            --w-col-s: 8%;                
+            --w-col-photo: 10%;           
             
-            /* Rapport PDF - Relevé B (Modifié pour nouvelle disposition) */
-            --w-print-col-defaut: 70%;    /* Colonne Défaut PDF */
-            --w-print-col-classe: 15%;    /* Colonne Classe PDF */
-            --w-print-col-s: 15%;          /* Colonne S PDF */
+            --w-print-col-defaut: 70%;    
+            --w-print-col-classe: 15%;    
+            --w-print-col-s: 15%;         
             
-            /* Rapport PDF - Synthèse C */
-            --w-synth-libelle: 80%;       /* Colonne Éléments inspectés */
-            --w-synth-classe: 10%;        /* Colonne Note */
-            --w-synth-s: 10%;             /* Colonne S */
+            --w-synth-libelle: 70%;       
+            --w-synth-classe: 20%;        
+            --w-synth-s: 10%;             
 
             /* --- 4. DIMENSIONS PHOTOS --- */
-            --dim-vignette: 100px;        /* Taille aperçu carré (Formulaire) */
-            --dim-img-print-gen: 220px;   /* Hauteur photo générale (PDF) */
-            --dim-img-print-defaut: 120px;/* Hauteur photo défaut (PDF) */
+            --dim-vignette: 100px;        
+            --dim-img-print-gen: 220px;   
+            --dim-img-print-defaut: 120px;
+            --dim-img-cover: 320px;       
+            --esp-titre-cadre: 10px;      
+            --esp-cadre-texte: 30px;      
 
             /* --- 5. DIMENSIONS BOUTONS & UI --- */
-            --dim-btn-mini: 28px;         /* Taille bouton appareil photo (rond) */
-            --pad-btn-principal: 18px;    /* Padding gros boutons */
-            --h-logo: 55px;               /* Hauteur Logo */
+            --dim-btn-mini: 28px;         
+            --pad-btn-principal: 18px;    
+            --h-logo: 55px;
+
+            /* --- 6. CONFIGURATION IMPRESSION (PDF) --- */
+            --print-marge-haut: 20mm;
+            --print-marge-bas: 15mm;
+            --print-marge-gauche: 10mm;
+            --print-marge-droite: 10mm;
+            --print-break-section: always; 
         }
 
         /* --- CSS GÉNÉRAL --- */
-        body { font-family: var(--font-stack); background: var(--c-fond-page); margin: 0; padding: 0; color: var(--c-texte); }
+        body { 
+            font-family: var(--font-stack); 
+            font-size: var(--taille-texte); 
+            background: var(--c-fond-page); 
+            margin: 0; padding: 0; 
+            color: var(--c-texte); 
+        }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         .hidden { display: none !important; }
@@ -78,37 +95,73 @@
         }
         .header-text { flex-grow: 1; text-align: center; }
         .header h1 { margin: 0; font-size: var(--taille-h1); }
-        .header p { margin: 5px 0 0; opacity: 0.9; font-size: 0.9rem; }
+        .header p { margin: 5px 0 0; opacity: 0.9; font-size: 0.9em; } 
         .header-logo { height: var(--h-logo); background: white; padding: 4px; border-radius: 4px; margin-left: 15px; }
         
+        /* STYLES ACCORDEON AMELIORÉS */
+        /* Application des variables aux titres du formulaire */
+        h2.form-h2 {
+            color: var(--c-primaire);
+            font-size: var(--taille-h2); /* Variable H2 appliquée */
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Style spécifique pour les titres A.1, A.2, etc. (MODIFIÉ) */
+        .form-sub-h4 {
+            color: var(--c-primaire); 
+            font-size: var(--taille-titre-sections-A); 
+            background-color: var(--bg-titre-sections-A); /* Fond gris appliqué */
+            margin-top: 20px; 
+            margin-bottom: 10px;
+            padding: 10px 15px; /* Padding pour effet boite */
+            font-weight: 700; 
+            border-radius: 6px; /* Bords arrondis */
+        }
+
+        h3.form-h3, h4.form-h4, h5.form-h5 {
+            cursor: pointer; 
+            user-select: none;
+            transition: background-color 0.2s;
+        }
+        h3.form-h3:hover, h4.form-h4:hover, h5.form-h5:hover {
+            opacity: 0.9;
+        }
+
         h3.form-h3 {
-            color: var(--c-texte); font-size: var(--taille-h3); margin-top: 20px; margin-bottom: 0; 
+            color: var(--c-texte); font-size: var(--taille-h3); /* Variable H3 appliquée */ 
+            margin-top: 20px; margin-bottom: 0; 
             background: var(--c-fond-accordeon); padding: 15px; border-radius: 6px; font-weight: 700; border-left: 5px solid var(--c-primaire);
-            cursor: pointer; display: flex; align-items: center; gap: 10px; user-select: none;
+            display: flex; align-items: center; gap: 10px;
         }
 
         h4.form-h4 {
-            color: var(--c-primaire); font-size: var(--taille-h4); margin-top: 15px; margin-bottom: 5px;
+            color: var(--c-primaire); font-size: var(--taille-h4); /* Variable H4 appliquée */
+            margin-top: 15px; margin-bottom: 5px;
             padding: 5px 10px; font-weight: 700; border-bottom: 1px solid #eee;
-            display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none;
+            display: flex; align-items: center; gap: 10px; 
         }
         
         h5.form-h5 {
-            color: #555; font-size: 0.95rem; margin-top: 10px; margin-bottom: 5px;
+            color: #555; font-size: 1.05em; 
+            margin-top: 10px; margin-bottom: 5px;
             font-weight: 600; font-style: italic; display: flex; align-items: center; gap: 10px;
-            cursor: pointer; user-select: none;
         }
 
         .toggle-status { font-family: monospace; font-weight: bold; font-size: 1.2rem; min-width: 20px; text-align: center; }
 
         .classe-badge {
             background: white; border: 1px solid var(--c-primaire); color: var(--c-primaire);
-            padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold;
+            padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold;
             min-width: 30px; text-align: center; margin-left: auto;
         }
         .badge-s { color: var(--c-alerte); margin-left: 4px; }
 
         .section-content, .subsection-content { overflow: hidden; padding-top: 5px; margin-bottom: 10px; }
+        
+        /* C'est ici que l'on cache ce qui a la classe 'collapsed' */
         .section-content.collapsed, .subsection-content.collapsed, .iqoa-table.collapsed { display: none; }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -118,15 +171,16 @@
             .header-logo { margin-left: 0; }
         }
 
-        label.titre-champ { display: block; font-weight: 600; margin-top: 15px; margin-bottom: 5px; color: #444; font-size: 0.9rem; }
+        label.titre-champ { display: block; font-weight: 600; margin-top: 15px; margin-bottom: 5px; color: #444; font-size: var(--taille-texte); }
+        
         input[type="text"], input[type="date"], input[type="number"], select, textarea { 
             width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: var(--taille-texte); 
         }
 
         /* TABLEAUX IQOA */
         .iqoa-table { width: 100%; border-collapse: collapse; margin-top: 5px; table-layout: fixed; margin-bottom: 15px; }
-        .iqoa-table th { background: var(--c-fond-header-tab); text-align: left; font-size: 0.75rem; color: #64748b; padding: 6px; border: 1px solid #ddd; }
-        .iqoa-table td { padding: 6px; border: 1px solid #ddd; vertical-align: middle; font-size: 0.85rem; }
+        .iqoa-table th { background: var(--c-fond-header-tab); text-align: left; font-size: 0.85em; color: #64748b; padding: 6px; border: 1px solid #ddd; }
+        .iqoa-table td { padding: 6px; border: 1px solid #ddd; vertical-align: middle; font-size: 0.95em; }
         
         .mini-photo-btn {
             display: inline-block; background: #e9ecef; border: 1px solid #ced4da;
@@ -150,18 +204,94 @@
         }
 
         /* --- RAPPORT PDF --- */
-        #section-rapport { background: white; min-height: 100vh; padding: 40px; display: none; font-size: 11pt; }
-        .print-header { border-bottom: 2px solid var(--c-primaire); padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .print-h2 { background: #f0f2f5; color: var(--c-primaire); padding: 8px 15px; font-size: 14pt; font-weight: bold; border-left: 5px solid var(--c-primaire); margin-bottom: 15px; margin-top: 30px; }
+        #section-rapport { background: white; min-height: 100vh; display: none; font-size: var(--taille-texte); }
+        
+        .report-page-container {
+            padding: var(--print-marge-haut) var(--print-marge-droite) var(--print-marge-bas) var(--print-marge-gauche);
+            box-sizing: border-box;
+            background: white;
+            min-height: 297mm;
+        }
+
+        /* STYLE PAGE DE GARDE */
+        .cover-page {
+            position: relative;
+            min-height: calc(297mm - var(--print-marge-haut) - var(--print-marge-bas));
+            width: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden; 
+            padding: var(--print-marge-haut) var(--print-marge-droite) var(--print-marge-bas) var(--print-marge-gauche);
+            box-sizing: border-box;
+        }
+        .cover-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .cover-logo img { width: 180px; }
+        .cover-client-date { font-size: 1.2em; color: #333; }
+        .cover-title { text-align: center; margin-top: 10px; margin-bottom: 10px; color: var(--c-primaire); }
+        .cover-title h1 { 
+            font-size: var(--taille-h1); 
+            font-weight: 800; 
+            margin: 0; 
+            line-height: 1.2; 
+            text-transform: uppercase; 
+        }
+        .cover-photo {
+            display: flex; justify-content: center; align-items: center;
+            margin-top: var(--esp-titre-cadre); margin-bottom: var(--esp-cadre-texte);
+            overflow: hidden; height: var(--dim-img-cover); 
+            border: 1px solid #eee; background-color: #f9f9f9;
+        }
+        .cover-photo-img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
+        .cover-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px; border-top: 5px solid var(--c-primaire); padding-top: 20px; }
+        .cover-info { font-size: 1.1em; line-height: 1.6; color: #333; display: flex; flex-direction: column; gap: 5px; }
+        .cover-info strong { color: var(--c-primaire); display: inline-block; width: 160px; }
+        .cover-right-block { display: flex; flex-direction: column; align-items: flex-end; gap: 30px; }
+        .cover-note { text-align: center; }
+        .cover-note-label { display: block; font-size: 1.3em; font-weight: bold; color: var(--c-primaire); margin-bottom: 10px; }
+        .cover-note-value { display: inline-block; font-size: 2.5em; font-weight: 800; color: white; padding: 10px 40px; border-radius: 12px; background-color: var(--c-gris); }
+        .cover-inspector { text-align: right; border-left: 3px solid var(--c-primaire); padding-left: 15px; }
+        .cover-inspector-label { font-size: 1em; font-weight: bold; color: var(--c-primaire); text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .cover-inspector-name { font-size: 1.2em; font-weight: 600; color: #333; }
+
+        /* Styles rapport standard */
+        .print-header { border-bottom: 2px solid var(--c-primaire); padding: 10px 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .print-h2 { 
+            background: #f0f2f5; 
+            color: var(--c-primaire); 
+            padding: 8px 15px; 
+            font-size: var(--taille-h2); /* Variable H2 appliquée au rapport */
+            font-weight: bold; 
+            border-left: 5px solid var(--c-primaire); 
+            margin-bottom: 15px; 
+            margin-top: 30px; 
+        }
+        
         .print-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; table-layout: fixed; }
         .print-table th, .print-table td { border: 1px solid #ccc; padding: 6px; text-align: left; vertical-align: top; word-wrap: break-word; }
         .print-table th { background: #eee; }
-        .row-sub-h4 td { background-color: #f0f4f8; font-weight: 700; color: var(--c-primaire); border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 8px 10px; }
-        .row-section-header td { background-color: #dce4f2; font-weight: bold; text-transform: uppercase; }
+        
+        .row-sub-h4 td { 
+            background-color: var(--bg-titre-sections-A); /* MODIF: Utilisation variable fond */
+            font-weight: 700; 
+            color: var(--c-primaire); 
+            border-top: 1px solid #ccc; 
+            border-bottom: 1px solid #ccc; 
+            padding: 8px 10px;
+            font-size: var(--taille-titre-sections-A); /* MODIF: Utilisation variable taille */
+        }
+        
+        .row-section-header td { 
+            background-color: #dce4f2; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            font-size: var(--taille-h3); /* Variable H3 appliquée au rapport (titres de section) */
+        }
         
         .print-photos-2cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
         .print-img { width: 100%; height: var(--dim-img-print-gen); object-fit: contain; border: 1px solid #eee; }
-        
         .print-defect-photos { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
         .print-defect-img { height: var(--dim-img-print-defaut); border: 1px solid #ccc; }
 
@@ -171,10 +301,15 @@
         .btn-print { background: var(--c-primaire); }
 
         @media print {
+            @page { margin: 0; size: A4; }
+            body { margin: 0; padding: 0; background: white; }
+            /* FORCE L'IMPRESSION DES BACKGROUNDS */
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            
             #section-formulaire, .action-bar { display: none !important; }
-            #section-rapport { display: block !important; padding: 0; margin: 0; }
-            .print-section { page-break-inside: avoid; margin-bottom: 30px; }
-            .page-break { page-break-before: always; }
+            #section-rapport { display: block !important; padding: 0; }
+            .print-section { page-break-before: var(--print-break-section); page-break-inside: avoid; margin-bottom: 30px; }
+            .report-page-container .print-section:first-child { page-break-before: auto; }
         }
     </style>
 </head>
@@ -187,7 +322,6 @@
             <h1>IQOA - MUR POIDS EN MAÇONNERIE</h1>
             <p>Procès-Verbal de Visite d'Inspection</p>
         </div>
-        <!-- Logo Apave -->
         <img src="https://img.batiweb.com/repo-images/supplier/5820813/apave-logo.webp" alt="Logo APAVE" class="header-logo">
     </div>
 
@@ -206,6 +340,10 @@
                 <input type="date" id="i_date">
             </div>
         </div>
+        
+        <label class="titre-champ">N° d'affaire</label>
+        <input type="text" id="i_num_affaire" placeholder="Ex: 2023-XXXX">
+
         <div class="grid-2">
             <div>
                 <label class="titre-champ">Identifiant Mur</label>
@@ -261,7 +399,7 @@
         <label class="titre-champ">Réseaux concessionnaires visibles</label>
         <input type="text" id="i_reseaux_visibles" placeholder="Ex: Câbles électriques, conduites d'eau">
         
-        <h4 class="form-sub-h4">Plan de localisation</h4>
+        <h4 class="form-sub-h4">A.4 Plan de localisation</h4>
         <label class="titre-champ">Observations Plan / Croquis</label>
         <textarea id="i_plan_localisation_obs" placeholder="Notes sur le plan de localisation"></textarea>
         
@@ -269,7 +407,7 @@
         <input type="file" id="file_plan_localisation" accept="image/*" multiple onchange="handleImageUpload(this, 'grid_plan_localisation')">
         <div id="grid_plan_localisation" class="preview-grid"></div>
 
-        <h4 class="form-sub-h4">A.4 Caractéristiques générales de l’ouvrage</h4>
+        <h4 class="form-sub-h4">A.5 Caractéristiques générales de l’ouvrage</h4>
         <div class="grid-2">
             <div>
                 <label class="titre-champ">Nature de l’ouvrage</label>
@@ -291,14 +429,6 @@
             </div>
         </div>
         
-        <!-- A.5 Plan de localisation et A.6 Vues générales -->
-        <h4 class="form-sub-h4">A.5 Plan de localisation</h4>
-        <label class="titre-champ">Observations Plan / Croquis</label>
-        <textarea id="i_plan_localisation_obs" placeholder="Notes sur le plan de localisation"></textarea>
-        <label class="titre-champ">Photos du Plan / Croquis</label>
-        <input type="file" id="file_plan_localisation" accept="image/*" multiple onchange="handleImageUpload(this, 'grid_plan_localisation')">
-        <div id="grid_plan_localisation" class="preview-grid"></div>
-        
         <h4 class="form-sub-h4">A.6 Vues générales</h4>
         <label class="titre-champ">Photos Vue Générale</label>
         <input type="file" id="file_gene" accept="image/*" multiple onchange="handleImageUpload(this, 'grid_gene')">
@@ -316,7 +446,8 @@
     <!-- C. SYNTHÈSE -->
     <div class="box">
         <h2 class="form-h2">C. Fiche de Synthèse</h2>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Le tableau récapitulatif sera généré automatiquement dans le rapport.</p>
+        <label class="titre-champ">C. Observations de synthèse & Conclusion (Pour le rapport)</label>
+        <textarea id="i_synthese_obs" rows="5" placeholder="Résumé global de l'état de l'ouvrage..."></textarea>
     </div>
 
     <!-- D. NON VISITE -->
@@ -339,12 +470,12 @@
     <button class="btn-generate" onclick="generateReport()">📄 GÉNÉRER LE RAPPORT FINAL</button>
 </div>
 
-<!-- SECTION 2: RAPPORT PDF (Généré dynamiquement) -->
+<!-- SECTION 2: RAPPORT PDF -->
 <div id="section-rapport">
     <div id="report-content-area"></div>
 </div>
 
-<!-- Barre d'action pour imprimer ou revenir à l'édition -->
+<!-- Barre d'action -->
 <div id="action-bar" class="action-bar hidden">
     <button class="btn-action btn-back" onclick="editMode()">✏️ Modifier</button>
     <button class="btn-action btn-print" onclick="window.print()">🖨️ Imprimer / PDF</button>
@@ -352,10 +483,9 @@
 
 <script>
     // --- VARIABLES GLOBALES ---
-    const photoStorage = {}; // Stockage des images en base64
+    const photoStorage = {}; 
     const classOrder = { "": -1, "0": 0, "1": 1, "2": 2, "2E": 3, "3": 4, "3U": 5 };
 
-    // Dictionnaire des codes IQOA
     const codeLabelMap = {
         '1110': "Fissuration terrain // mur", '1111': "Fissuration en arc", '1112': "Tassement terrain amont", '1113': "Déplacement / Rotation", '1114': "Bourrelets de terrain", '1115': "Érosions amont",
         '1120': "Inclinaison arbres amont", '1121': "Végétation amont", '1122': "Surcharges amont", '1123': "Structures voisines", '1124': "Réseaux concessionnaires",
@@ -379,7 +509,6 @@
         '4410': "Tirant corrodé", '4412': "Fondations (Encagement)", '4413': "Injection maçonnerie", '4414': "Contrefort décollé", '4420': "Drainage réparé", '4421': "Placage épinglé décollé"
     };
 
-    // Structure complète du formulaire IQOA
     const fullStructure = [
         { id: "1", title: "1. ZONE D'INFLUENCE", subsections: [
             { id: "1.1", title: "1.1 En partie supérieure du mur", groups: [
@@ -439,17 +568,32 @@
         ]}
     ];
 
+    function getNoteColor(note) {
+        if (!note || note === '-' || note === 'Non évalué') return '#9e9e9e'; 
+        if (note === '0' || note === '1') return '#009A4D'; 
+        if (note === '2') return '#FBC02D'; 
+        if (note === '2E') return '#F57C00'; 
+        if (note === '3') return '#E64A19'; 
+        if (note === '3U') return '#D32F2F'; 
+        return '#9e9e9e';
+    }
+
     function initForm() {
         const container = document.getElementById('dynamic-defects-container');
         fullStructure.forEach(section => {
-            let html = `<h3 class="form-h3" onclick="toggleSection(this)"><span class="toggle-status">+</span> ${section.title} <span class="classe-badge" id="synth_sec_${section.id}">-</span></h3>`;
-            html += `<div class="section-content collapsed">`;
+            // Niveau 1 (1. Zone d'influence...)
+            let html = `<h3 class="form-h3"><span class="toggle-status">-</span> ${section.title} <span class="classe-badge" id="synth_sec_${section.id}">-</span></h3>`;
+            
+            // MODIFICATION ICI : On enlève la classe 'collapsed' pour que le contenu du niveau 1 soit visible par défaut
+            html += `<div class="section-content">`; 
             
             section.subsections.forEach(sub => {
-                html += `<h4 class="form-h4" onclick="toggleSection(this)"><span class="toggle-status">+</span> ${sub.title} <span class="classe-badge" id="synth_sub_${sub.id.replace('.','_')}">-</span></h4>`;
+                // Niveau 2 (1.1 En partie supérieure...) - On laisse fermé
+                html += `<h4 class="form-h4"><span class="toggle-status">+</span> ${sub.title} <span class="classe-badge" id="synth_sub_${sub.id.replace('.','_')}">-</span></h4>`;
                 html += `<div class="subsection-content collapsed">`;
                 sub.groups.forEach(group => {
-                    html += `<h5 class="form-h5" onclick="toggleSection(this)"><span class="toggle-status">+</span> ${group.title} <span class="classe-badge" id="synth_grp_${group.id}">-</span></h5>`;
+                    // Niveau 3 (111 - Stabilité...) - On laisse fermé
+                    html += `<h5 class="form-h5"><span class="toggle-status">+</span> ${group.title} <span class="classe-badge" id="synth_grp_${group.id}">-</span></h5>`;
                     html += `<table class="iqoa-table collapsed"><thead><tr><th style="width:var(--w-col-code)">Code</th><th style="width:var(--w-col-libelle)">Libellé</th><th style="width:var(--w-col-classe)">Classe</th><th style="width:var(--w-col-s)">S</th><th>Obs.</th><th style="width:var(--w-col-photo)">Photo</th></tr></thead><tbody>`;
                     group.codes.forEach(code => {
                         html += `<tr>
@@ -470,6 +614,19 @@
         });
 
         document.querySelectorAll('.class-select, .s-checkbox').forEach(el => el.addEventListener('change', updateSynthesis));
+
+        // Gestionnaire de clics
+        container.addEventListener('click', function(e) {
+            const header = e.target.closest('.form-h3, .form-h4, .form-h5');
+            if (header) {
+                const content = header.nextElementSibling;
+                if (content) {
+                    const isCollapsed = content.classList.toggle('collapsed');
+                    const icon = header.querySelector('.toggle-status');
+                    if (icon) icon.innerText = isCollapsed ? '+' : '-';
+                }
+            }
+        });
     }
 
     function updateSynthesis() {
@@ -497,33 +654,22 @@
         });
     }
 
-    window.toggleSection = function(el) {
-        const content = el.nextElementSibling;
-        const isCollapsed = content.classList.toggle('collapsed');
-        const icon = el.querySelector('.toggle-status');
-        if (icon) icon.innerText = isCollapsed ? '+' : '-';
-    }
-
-    /* COMPRESSION DES IMAGES */
     async function handleImageUpload(input, gridId) {
         if (!photoStorage[gridId]) photoStorage[gridId] = [];
         const btnId = input.closest('.mini-photo-btn')?.id || '';
         const btn = document.getElementById(btnId);
-        
         if (btn) btn.classList.add('loading');
-
         const files = Array.from(input.files);
         for (const file of files) {
             const compressed = await compressImage(file);
             photoStorage[gridId].push(compressed);
         }
-
         renderGrid(gridId);
         if (btn) {
             btn.classList.remove('loading');
             btn.classList.add('has-photos');
         }
-        input.value = ''; // Reset input
+        input.value = ''; 
     }
 
     function compressImage(file) {
@@ -539,11 +685,9 @@
                     const scaleSize = MAX_WIDTH / img.width;
                     canvas.width = MAX_WIDTH;
                     canvas.height = img.height * scaleSize;
-                    
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    
-                    resolve(canvas.toDataURL('image/jpeg', 0.7)); // Compression JPEG qualité 70%
+                    resolve(canvas.toDataURL('image/jpeg', 0.7)); 
                 };
             };
         });
@@ -571,171 +715,190 @@
         }
     }
 
-    function renderPrintPhotos(gridId, targetId) {
-        const container = document.getElementById(targetId);
-        if (!container) return;
-        container.innerHTML = "";
-        const photos = photoStorage[gridId] || [];
-        photos.forEach(src => container.insertAdjacentHTML('beforeend', `<img src="${src}" class="print-img">`));
-    }
-
-    // --- GÉNÉRATION DU RAPPORT ---
     window.generateReport = function() {
-        const getVal = id => document.getElementById('i_' + id)?.value || "-";
-        const logoUrl = "https://img.batiweb.com/repo-images/supplier/5820813/apave-logo.webp";
-        
-        let html = `<div class="print-header">`;
-        html += `<div style="flex-grow: 1;"><h1>RAPPORT D'INSPECTION IQOA</h1><p>Murs de Soutènement en Maçonnerie</p></div>`;
-        html += `<img src="${logoUrl}" alt="Logo APAVE" style="height: 55px;">`;
-        html += `</div>`;
-        
-        // A. Identification
-        html += `<div class="print-section"><div class="print-h2">A. Identification</div><table class="print-table">`;
-        html += `<tr class="row-sub-h4"><td colspan="4">A.1 Données Administratives</td></tr>`;
-        html += `<tr><th width="25%">Client</th><td>${getVal('client')}</td><th width="25%">Date</th><td>${getVal('date')}</td></tr>`;
-        html += `<tr><th>ID Mur</th><td>${getVal('id_mur')}</td><th>Type</th><td>${getVal('type_mac')}</td></tr>`;
-        html += `<tr><th>Intervenant</th><td colspan="3">${getVal('intervenant')}</td></tr>`;
+        try {
+            const getVal = id => {
+                const el = document.getElementById('i_' + id);
+                return el ? el.value : "-";
+            };
 
-        html += `<tr class="row-sub-h4"><td colspan="4">A.2 Données de Localisation</td></tr>`;
-        html += `<tr><th>Localisation GPS</th><td>${getVal('gps')}</td><th>Voie portée</th><td>${getVal('voie')}</td></tr>`;
-        html += `<tr><th>Voie soutenue</th><td colspan="3">${getVal('voie_soutenue')}</td></tr>`;
+            // Changement du titre du document pour que le nom du fichier PDF soit l'identifiant
+            const idMurVal = document.getElementById('i_id_mur').value;
+            if(idMurVal && idMurVal.trim() !== "") {
+                document.title = idMurVal;
+            } else {
+                document.title = "Rapport_IQOA_Anonyme";
+            }
 
-        html += `<tr class="row-sub-h4"><td colspan="4">A.3 Données d’usage</td></tr>`;
-        html += `<tr><th>Date construction</th><td>${getVal('date_construction')}</td><th>Panneaux PTAC</th><td>${getVal('panneaux_ptac')}</td></tr>`;
-        html += `<tr><th>Réseaux visibles</th><td colspan="3">${getVal('reseaux_visibles')}</td></tr>`;
+            const logoUrl = "https://img.batiweb.com/repo-images/supplier/5820813/apave-logo.webp";
+            let globalMaxRank = -1;
+            let globalNote = "Non évalué";
+            let globalHasS = false; 
 
-        html += `<tr class="row-sub-h4"><td colspan="4">A.4 Caractéristiques générales de l’ouvrage</td></tr>`;
-        html += `<tr><th>Nature</th><td>${getVal('nature_ouvrage')}</td><th>Largeur voie</th><td>${getVal('largeur_voie_soutenue')} m</td></tr>`;
-        html += `<tr><th>Hauteur moy.</th><td>${getVal('hauteur_moyenne')} m</td><th>Longueur tot.</th><td>${getVal('longueur_totale')} m</td></tr>`;
-        
-        html += `<tr class="row-sub-h4"><td colspan="4">A.5 Plan de localisation et Vues générales</td></tr>`;
-        html += `<tr><th>Observations</th><td colspan="3">${getVal('plan_localisation_obs')}</td></tr>`;
-        html += `</table>`;
-        html += `<div class="print-photos-2cols" id="p_grid_plan_localisation"></div>`;
+            document.querySelectorAll('.class-select').forEach(sel => {
+                const val = sel.value;
+                const rank = classOrder[val] || -1;
+                if (rank > globalMaxRank) { globalMaxRank = rank; globalNote = val; }
+                const code = sel.id.replace('c_', '');
+                const elS = document.getElementById('s_' + code);
+                if(elS && elS.checked) globalHasS = true;
+            });
+            if (globalMaxRank === -1) globalNote = "Non évalué";
 
-        html += `<div class="print-section"><h4 style="color:#1D3051; margin-bottom:5px;">A.6 Vues générales</h4>`;
-        html += `<div class="print-photos-2cols" id="p_grid_gene"></div></div>`;
-        html += `</div>`;
+            // PAGE DE GARDE
+            let html = `<div class="cover-page">`;
+            html += `<div class="cover-top">`;
+            html += `<div><div class="cover-client-date"><strong>Client :</strong> ${getVal('client')}</div><div class="cover-client-date"><strong>Date :</strong> ${getVal('date')}</div></div>`;
+            html += `<div class="cover-logo"><img src="${logoUrl}" alt="Logo Apave"></div>`;
+            html += `</div>`;
+            html += `<div class="cover-title"><h1>RAPPORT DE VISITE D'EVALUATION</h1></div>`;
+            
+            let coverImgHTML = `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#999; font-style:italic;">Pas de photo générale</div>`;
+            if (photoStorage['grid_gene'] && photoStorage['grid_gene'].length > 0) {
+                coverImgHTML = `<img src="${photoStorage['grid_gene'][0]}" class="cover-photo-img">`;
+            }
+            html += `<div class="cover-photo">${coverImgHTML}</div>`;
+            
+            html += `<div class="cover-footer">`;
+            html += `<div class="cover-info">`;
+            html += `<span class="cover-info-item"><strong>N° d'affaire :</strong> ${getVal('num_affaire')}</span>`;
+            html += `<span class="cover-info-item"><strong>Identifiant :</strong> ${getVal('id_mur')}</span>`;
+            html += `<span class="cover-info-item"><strong>Voie soutenue :</strong> ${getVal('voie_soutenue')}</span>`;
+            html += `<span class="cover-info-item"><strong>Voie protégée :</strong> ${getVal('voie')}</span>`;
+            html += `</div>`;
+            
+            const noteDisplay = globalNote + (globalHasS ? ' S' : '');
+            
+            html += `<div class="cover-right-block">`;
+            html += `<div class="cover-note">`;
+            html += `<span class="cover-note-label">NOTE IQOA</span>`;
+            html += `<span class="cover-note-value" style="background-color: ${getNoteColor(globalNote)};">${noteDisplay}</span>`;
+            html += `</div>`;
+            html += `<div class="cover-inspector">`;
+            html += `<span class="cover-inspector-label">Inspecteur :</span>`;
+            html += `<span class="cover-inspector-name">${getVal('intervenant')}</span>`;
+            html += `</div>`;
+            html += `</div></div>`; // FIN cover-page
 
-        // B. Relevé
-        html += `<div class="print-section page-break"><div class="print-h2">B. Relevé des Désordres</div><table class="print-table">`;
-        // CORRECTION ICI: Structure de 3 lignes pour les désordres (Obs sous photo)
-        html += `<tbody>`; // Pas de thead global, headers insérés par section
-        
-        let hasB = false;
-        
-        // En-tête à insérer après chaque titre de section
-        const tableHeaderRow = `<tr style="background-color: var(--c-fond-header-tab); font-weight: bold; color: #64748b; font-size: 0.75rem;">
-            <td style="width:var(--w-print-col-defaut)">Désordre / Élément</td>
-            <td style="width:var(--w-print-col-classe); text-align:center;">Classe</td>
-            <td style="width:var(--w-print-col-s); text-align:center;">S</td>
-        </tr>`;
+            // RAPPORT
+            html += `<div class="report-page-container">`;
+            html += `<div class="print-header"><div style="flex-grow: 1;"></div></div>`;
+            
+            html += `<div class="print-section"><div class="print-h2">A. Identification</div><table class="print-table">`;
+            html += `<tr class="row-sub-h4"><td colspan="4">A.1 Données Administratives</td></tr>`;
+            html += `<tr><th width="25%">Client</th><td>${getVal('client')}</td><th width="25%">Date</th><td>${getVal('date')}</td></tr>`;
+            html += `<tr><th>ID Mur</th><td>${getVal('id_mur')}</td><th>Type</th><td>${getVal('type_mac')}</td></tr>`;
+            html += `<tr><th>Intervenant</th><td colspan="3">${getVal('intervenant')}</td></tr>`;
+            html += `<tr class="row-sub-h4"><td colspan="4">A.2 Données de Localisation</td></tr>`;
+            html += `<tr><th>Localisation GPS</th><td>${getVal('gps')}</td><th>Voie portée</th><td>${getVal('voie')}</td></tr>`;
+            html += `<tr><th>Voie soutenue</th><td colspan="3">${getVal('voie_soutenue')}</td></tr>`;
+            html += `<tr class="row-sub-h4"><td colspan="4">A.3 Données d’usage</td></tr>`;
+            html += `<tr><th>Date construction</th><td>${getVal('date_construction')}</td><th>Panneaux PTAC</th><td>${getVal('panneaux_ptac')}</td></tr>`;
+            html += `<tr><th>Réseaux visibles</th><td colspan="3">${getVal('reseaux_visibles')}</td></tr>`;
+            html += `</table>`; // Close table after A.3
 
-        fullStructure.forEach(sec => {
-            let secPrinted = false;
-            sec.subsections.forEach(sub => {
-                let subPrinted = false;
-                sub.groups.forEach(grp => {
-                    let grpPrinted = false;
-                    grp.codes.forEach(code => {
-                        const cls = document.getElementById('c_' + code).value;
-                        const obs = document.getElementById('o_' + code).value;
-                        const secu = document.getElementById('s_' + code).checked;
-                        const photos = photoStorage['grid_' + code] || [];
-                        if (cls || obs.trim() !== "" || photos.length > 0) {
-                            if (!secPrinted) { 
-                                html += `<tr class="row-section-header"><td colspan="3">${sec.title}</td></tr>`;
-                                html += tableHeaderRow; // Insertion de l'en-tête de colonnes
-                                secPrinted = true; 
+            // A.4 Plan de localisation
+            html += `<div style="background-color: var(--bg-titre-sections-A); font-weight: 700; color: var(--c-primaire); border: 1px solid #ccc; padding: 8px 10px; margin-bottom: 5px; font-size: var(--taille-titre-sections-A);">A.4 Plan de localisation</div>`;
+            html += `<div style="margin-bottom: 10px;"><strong>Observations :</strong> ${getVal('plan_localisation_obs')}</div>`;
+            html += `<div class="print-photos-2cols" id="p_grid_plan_localisation" style="margin-bottom: 15px;"></div>`;
+
+            // A.5 Caractéristiques (New Table)
+            html += `<table class="print-table">`;
+            html += `<tr class="row-sub-h4"><td colspan="4">A.5 Caractéristiques générales de l’ouvrage</td></tr>`;
+            html += `<tr><th>Nature</th><td>${getVal('nature_ouvrage')}</td><th>Largeur voie</th><td>${getVal('largeur_voie_soutenue')} m</td></tr>`;
+            html += `<tr><th>Hauteur moy.</th><td>${getVal('hauteur_moyenne')} m</td><th>Longueur tot.</th><td>${getVal('longueur_totale')} m</td></tr>`;
+            html += `</table>`;
+
+            // A.6 Vues générales
+            html += `<div style="background-color: var(--bg-titre-sections-A); font-weight: 700; color: var(--c-primaire); border: 1px solid #ccc; padding: 8px 10px; margin-bottom: 5px; font-size: var(--taille-titre-sections-A);">A.6 Vues générales</div>`;
+            html += `<div class="print-photos-2cols" id="p_grid_gene"></div>`;
+            html += `</div>`;
+
+            html += `<div class="print-section"><div class="print-h2">B. Relevé des Désordres</div><table class="print-table"><tbody>`; 
+            let hasB = false;
+            const tableHeaderRow = `<tr style="background-color: var(--c-fond-header-tab); font-weight: bold; color: #64748b; font-size: 0.75rem;"><td style="width:var(--w-print-col-defaut)">Désordre / Élément</td><td style="width:var(--w-print-col-classe); text-align:center;">Classe</td><td style="width:var(--w-print-col-s); text-align:center;">S</td></tr>`;
+            fullStructure.forEach(sec => {
+                let secPrinted = false;
+                sec.subsections.forEach(sub => {
+                    let subPrinted = false;
+                    sub.groups.forEach(grp => {
+                        grp.codes.forEach(code => {
+                            const cls = document.getElementById('c_' + code).value;
+                            const obs = document.getElementById('o_' + code).value;
+                            const secu = document.getElementById('s_' + code).checked;
+                            const photos = photoStorage['grid_' + code] || [];
+                            if (cls || obs.trim() !== "" || photos.length > 0) {
+                                if (!secPrinted) { html += `<tr class="row-section-header"><td colspan="3">${sec.title}</td></tr>`; html += tableHeaderRow; secPrinted = true; }
+                                if (!subPrinted) { html += `<tr class="row-sub-h4"><td colspan="3">${sub.title}</td></tr>`; subPrinted = true; }
+                                hasB = true;
+                                html += `<tr><td><strong>${code} - ${codeLabelMap[code]}</strong></td><td align="center"><strong>${cls || '-'}</strong></td><td align="center" style="color:red; font-weight:bold">${secu?'S':''}</td></tr>`;
+                                if(photos.length > 0) {
+                                    html += `<tr><td colspan="3"><div class="print-defect-photos">`;
+                                    photos.forEach(p => html += `<img src="${p}" class="print-defect-img">`);
+                                    html += `</div></td></tr>`;
+                                }
+                                if(obs.trim() !== "") html += `<tr><td colspan="3" style="padding:8px; font-style:italic; background-color:#f9f9f9;"><strong>Observations :</strong><br>${obs.replace(/\n/g, '<br>')}</td></tr>`;
+                                html += `<tr><td colspan="3" style="border-left:none; border-right:none; height:20px;"></td></tr>`;
                             }
-                            if (!subPrinted) { html += `<tr class="row-sub-h4"><td colspan="3">${sub.title}</td></tr>`; subPrinted = true; }
-                            
-                            hasB = true;
-                            // Ligne 1: Titre + Classe + S
-                            html += `<tr><td><strong>${code} - ${codeLabelMap[code]}</strong></td><td align="center"><strong>${cls || '-'}</strong></td><td align="center" style="color:red; font-weight:bold">${secu?'S':''}</td></tr>`;
-                            // Ligne 2: Photos (si présentes)
-                            if(photos.length > 0) {
-                                html += `<tr><td colspan="3"><div class="print-defect-photos">`;
-                                photos.forEach(p => html += `<img src="${p}" class="print-defect-img">`);
-                                html += `</div></td></tr>`;
-                            }
-                            // Ligne 3: Observations (sous les photos)
-                            if(obs.trim() !== "") {
-                                html += `<tr><td colspan="3" style="padding:8px; font-style:italic; background-color:#f9f9f9;"><strong>Observations :</strong><br>${obs.replace(/\n/g, '<br>')}</td></tr>`;
-                            }
-                            // Ligne vide de séparation après l'article
-                            html += `<tr><td colspan="3" style="border-left:none; border-right:none; height:20px;"></td></tr>`;
-                        }
+                        });
                     });
                 });
             });
-        });
-        if(!hasB) html += `<tr><td colspan="3" align="center">Aucun désordre majeur relevé.</td></tr>`;
-        html += `</tbody></table></div>`;
+            if(!hasB) html += `<tr><td colspan="3" align="center">Aucun désordre majeur relevé.</td></tr>`;
+            html += `</tbody></table></div>`;
 
-        // C. Synthèse
-        html += `<div class="print-section page-break"><div class="print-h2">C. Fiche de Synthèse</div>`;
-        // UTILISATION DES VARIABLES CSS POUR LARGEUR COLONNES SYNTHESE (80% / 10% / 10%)
-        html += `<table class="print-table" style="border: 2px solid var(--c-primaire); width: 65%;">`;
-        html += `<thead><tr style="background-color: var(--c-primaire); color: white;"><th style="width: var(--w-synth-libelle);">Éléments et groupes inspectés</th><th style="text-align:center; width: var(--w-synth-classe);">Classe</th><th style="text-align:center; width: var(--w-synth-s);">S</th></tr></thead><tbody>`;
-        
-        fullStructure.forEach(sec => {
-            const rawNote = document.getElementById('synth_sec_' + sec.id).innerHTML;
-            const hasS = rawNote.includes('color:red');
-            const noteVal = rawNote.replace(/<[^>]*>/g, '').replace('S', '').trim();
-            
-            html += `<tr style="background-color: #dce4f2; font-weight: bold; border-top: 2px solid #aaa;"><td>${sec.title}</td><td align="center">${noteVal}</td><td align="center" style="color:red; font-weight:bold;">${hasS ? 'S' : ''}</td></tr>`;
-            
-            sec.subsections.forEach(sub => {
-                const subRaw = document.getElementById('synth_sub_' + sub.id.replace('.','_')).innerHTML;
-                const subS = subRaw.includes('color:red');
-                const subVal = subRaw.replace(/<[^>]*>/g, '').replace('S', '').trim();
-                
-                html += `<tr style="background-color: #f0f4f8; font-weight: 600;"><td style="padding-left:15px;">${sub.title}</td><td align="center">${subVal}</td><td align="center" style="color:red; font-weight:bold;">${subS ? 'S' : ''}</td></tr>`;
-                
-                if (sec.id === "1" || sec.id === "2") {
-                    sub.groups.forEach(group => {
-                        const grpRaw = document.getElementById('synth_grp_' + group.id).innerHTML;
-                        const grpS = grpRaw.includes('color:red');
-                        const grpVal = grpRaw.replace(/<[^>]*>/g, '').replace('S', '').trim();
-                        
-                        html += `<tr><td style="padding-left:35px; font-size:0.9rem; color:#555;">${group.title}</td><td align="center">${grpVal}</td><td align="center" style="color:red; font-weight:bold;">${grpS ? 'S' : ''}</td></tr>`;
-                    });
-                }
+            html += `<div class="print-section"><div class="print-h2">C. Fiche de Synthèse</div>`;
+            html += `<table class="print-table" style="border: 2px solid var(--c-primaire); width: 80%;">`;
+            html += `<thead><tr><th style="width: var(--w-synth-libelle); background-color: var(--c-primaire); color: white;">Éléments inspectés</th><th style="text-align:center; width: 10%; background-color: var(--c-primaire); color: white;">Classe</th><th style="text-align:center; width: 10%; background-color: var(--c-primaire); color: white;">S</th></tr></thead><tbody>`;
+            fullStructure.forEach(sec => {
+                const elSec = document.getElementById('synth_sec_' + sec.id);
+                if (!elSec) return;
+                const noteVal = elSec.innerHTML.replace(/<[^>]*>/g, '').replace('S', '').trim();
+                const hasS = elSec.innerHTML.includes('color:red');
+                html += `<tr style="background-color: #dce4f2; font-weight: bold;"><td>${sec.title}</td><td align="center">${noteVal}</td><td align="center" style="color:red; font-weight:bold;">${hasS ? 'S' : ''}</td></tr>`;
+                sec.subsections.forEach(sub => {
+                    const elSub = document.getElementById('synth_sub_' + sub.id.replace('.','_'));
+                    if (!elSub) return;
+                    const subVal = elSub.innerHTML.replace(/<[^>]*>/g, '').replace('S', '').trim();
+                    const subS = elSub.innerHTML.includes('color:red');
+                    html += `<tr style="background-color: #f0f4f8;"><td style="padding-left:15px;">${sub.title}</td><td align="center">${subVal}</td><td align="center" style="color:red; font-weight:bold;">${subS ? 'S' : ''}</td></tr>`;
+                });
             });
-        });
-        html += `</tbody></table>`;
-        
-        // E. Analyse
-        const analyseObs = document.getElementById('i_analyse_obs')?.value || "";
-        html += `<div class="print-section page-break"><div class="print-h2">E. ANALYSE ET RECOMMANDATIONS</div>`;
-        html += `<div style="border: 2px solid var(--c-primaire); border-radius: 6px; padding: 15px; background: #fff; min-height: 80px; font-size: 10.5pt; line-height: 1.4;">${analyseObs}</div></div>`;
-        
-        // D. Non visitée
-        const nonVisObs = document.getElementById('i_non_visitee_obs').value;
-        const nonVisPhotos = photoStorage['grid_non_visitee'] || [];
-        if (nonVisObs || nonVisPhotos.length > 0) {
-            html += `<div class="print-section page-break"><div class="print-h2">D. Partie Non Visitée de l’Ouvrage</div><table class="print-table"><tr><td>${nonVisObs}</td></tr></table>`;
-            html += `<div class="print-photos-2cols" id="p_grid_non_visitee"></div></div>`;
+            html += `</tbody></table>`;
+            html += `<div style="margin-top: 15px; border: 2px solid var(--c-primaire); border-radius: 6px; overflow: hidden;"><div style="background-color: var(--c-primaire); color: white; padding: 8px 15px; font-weight: bold;">Observations & Conclusion Générale</div><div style="padding: 15px; background: #fff; min-height: 80px;">${getVal('synthese_obs')}</div></div></div>`;
+            
+            const nonVisObs = getVal('non_visitee_obs');
+            if (nonVisObs !== "-" || (photoStorage['grid_non_visitee'] && photoStorage['grid_non_visitee'].length > 0)) {
+                html += `<div class="print-section"><div class="print-h2">D. Partie Non Visitée</div><table class="print-table"><tr><td>${nonVisObs}</td></tr></table><div class="print-photos-2cols" id="p_grid_non_visitee"></div></div>`;
+            }
+
+            const analyseObs = getVal('analyse_obs');
+            html += `<div class="print-section"><div class="print-h2">E. ANALYSE ET RECOMMANDATIONS</div><div style="border: 2px solid var(--c-primaire); border-radius: 6px; padding: 15px; background: #fff; min-height: 80px;">${analyseObs}</div></div>`;
+            html += `</div>`; 
+
+            document.getElementById('report-content-area').innerHTML = html;
+            setTimeout(() => {
+                const render = (gridId, targetId) => {
+                    const c = document.getElementById(targetId);
+                    if(c) { c.innerHTML = ""; (photoStorage[gridId] || []).forEach(src => c.insertAdjacentHTML('beforeend', `<img src="${src}" class="print-img">`)); }
+                };
+                render('grid_plan_localisation', 'p_grid_plan_localisation');
+                render('grid_gene', 'p_grid_gene');
+                render('grid_non_visitee', 'p_grid_non_visitee');
+            }, 100);
+
+            document.getElementById('section-formulaire').classList.add('hidden');
+            document.getElementById('section-rapport').style.display = 'block';
+            document.getElementById('action-bar').classList.remove('hidden');
+            window.scrollTo(0,0);
+        } catch (e) {
+            console.error(e);
+            alert("Une erreur est survenue lors de la génération du rapport.");
         }
-
-        document.getElementById('report-content-area').innerHTML = html;
-        setTimeout(() => {
-            const containerP = document.getElementById('p_grid_plan_localisation');
-            if(containerP) { containerP.innerHTML = ""; (photoStorage['grid_plan_localisation'] || []).forEach(src => containerP.insertAdjacentHTML('beforeend', `<img src="${src}" class="print-img">`)); }
-            const containerG = document.getElementById('p_grid_gene');
-            if(containerG) { containerG.innerHTML = ""; (photoStorage['grid_gene'] || []).forEach(src => containerG.insertAdjacentHTML('beforeend', `<img src="${src}" class="print-img">`)); }
-            const containerNV = document.getElementById('p_grid_non_visitee');
-            if(containerNV) { containerNV.innerHTML = ""; nonVisPhotos.forEach(src => containerNV.insertAdjacentHTML('beforeend', `<img src="${src}" class="print-img">`)); }
-        }, 100);
-
-        document.getElementById('section-formulaire').classList.add('hidden');
-        document.getElementById('section-rapport').style.display = 'block';
-        document.getElementById('action-bar').classList.remove('hidden');
-        window.scrollTo(0,0);
     }
 
     function editMode() {
+        document.title = "PV Visite IQOA - Mur Maçonnerie";
         document.getElementById('section-formulaire').classList.remove('hidden');
         document.getElementById('section-rapport').style.display = 'none';
         document.getElementById('action-bar').classList.add('hidden');
